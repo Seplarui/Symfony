@@ -9,12 +9,10 @@ use Symfony\Component\HttpFoundation\Response;
 class T41Controller extends Controller
 {
 	/**
-	 * 
+	 *
 	 * @route("/magic/{number}", name="number")
- 	 * @route("/dow/{dow}", name="dow"); 
+	 * 
 	 */
-	
-    
     public function magicNumberAction($number)
     
     {
@@ -23,9 +21,20 @@ class T41Controller extends Controller
         return new Response('<html><body>El número mágico generado es '.$number.'!</body></html>');
     }
     
-    public function dayOfWeekAction($dow) 
-    {
+    /**
+     * 
+     * @route ("/dow/{dia}", name="dia")
+     */
+    
+    
+    public function dayOfWeekAction($dia) {
+    	
+    	$dow=array("lunes","martes","miercoles","jueves","viernes","sabado","domingo");
+    	return new Response('<html><body>El dia de la semana es '. $dow[$dia].'.</body></html>.');
+    	
+    	
     	
     }
+ 
     
 }

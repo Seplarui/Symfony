@@ -1,0 +1,13 @@
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: symfony
+    database_user: root
+    database_password: delilah
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    secret: 76ef0f434740b4cf732e5128319056e5c124a327
+    database_driver: pdo_mysql
+    database_path: null

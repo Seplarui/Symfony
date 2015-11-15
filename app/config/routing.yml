@@ -1,3 +1,10 @@
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
+
+#app/config/routing.yml
+pagina_number:
+                path: /magic/{number}
+                defaults: {_controller: AppBundle:T41:prueba}
+                
