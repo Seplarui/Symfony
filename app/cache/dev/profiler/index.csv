@@ -187,3 +187,9 @@ bda1ea,127.0.0.1,GET,http://localhost:8000/helloAction/ru,1447619817,,200
 f5375c,127.0.0.1,GET,http://localhost:8000/helloAction/en,1447619827,,200
 27cb09,127.0.0.1,GET,http://localhost:8000/helloAction/fr,1447619831,,200
 a85031,127.0.0.1,GET,http://localhost:8000/helloAction/de,1447619836,,200
+ae64fc,127.0.0.1,GET,http://localhost:8000/,1447619975,004ff4,200
+004ff4,127.0.0.1,GET,http://localhost:8000/,1447619975,,404
+a87e07,127.0.0.1,GET,http://localhost:8000/T42,1447622234,3d5f44,200
+3d5f44,127.0.0.1,GET,http://localhost:8000/T42,1447622234,,404
+c7902d,127.0.0.1,GET,http://localhost:8000/T42,1447622353,dbb613,200
+dbb613,127.0.0.1,GET,http://localhost:8000/T42,1447622353,,404
