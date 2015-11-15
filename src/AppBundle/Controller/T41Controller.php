@@ -18,7 +18,7 @@ class T41Controller extends Controller
     {
         // replace this example code with whatever you need
         $number=rand();
-        return new Response('<html><body>El n�mero m�gico generado es '.$number.'!</body></html>');
+        return new Response('<html><body>El número mágico generado es '.$number.'!</body></html>');
     }
     
     /**
@@ -58,6 +58,36 @@ class T41Controller extends Controller
     	}
     	echo "</table>";
     	}
+    
+    
+    /**
+     * @route ("/helloAction/{lang}", name="lang")
+    */
+    
+    public function helloAction($lang) {
+    	
+    	switch($lang) {
+    		
+    		case 'es':
+    			return new Response(print "Bienvenido");
+    			break;
+    		case 'en':
+    			return new Response (print "Welcome");
+    			break;
+    		case 'fr':
+    			return new Response(print "Bienvenu");
+    			break;
+    		case 'de':
+    			return new Response(print "Willkommen");
+    			break;
+    		case 'ru':
+    			return new Response(print "добро пожаловать");
+    			break;
+    		default:
+    			return new Response(print "Idioma incorrecto");
+    			
+    	}
+    	
+    	
     }
-    
-    
+}

@@ -147,6 +147,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'tabla')), array (  '_controller' => 'AppBundle\\Controller\\T41Controller::tableAction',));
         }
 
+        // lang
+        if (0 === strpos($pathinfo, '/helloAction') && preg_match('#^/helloAction/(?P<lang>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'lang')), array (  '_controller' => 'AppBundle\\Controller\\T41Controller::helloAction',));
+        }
+
         // pagina_number
         if (0 === strpos($pathinfo, '/magic') && preg_match('#^/magic/(?P<number>[^/]++)$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'pagina_number')), array (  '_controller' => 'AppBundle\\Controller\\T41Controller::pruebaAction',));
