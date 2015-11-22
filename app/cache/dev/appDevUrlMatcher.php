@@ -154,7 +154,30 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         // index
         if (preg_match('#^/(?P<index>[^/]++)$#s', $pathinfo, $matches)) {
+            if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'HEAD'));
+                goto not_index;
+            }
+
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'index')), array (  '_controller' => 'AppBundle\\Controller\\T42Controller::indexAction',));
+        }
+        not_index:
+
+        if (0 === strpos($pathinfo, '/T42')) {
+            // about
+            if (preg_match('#^/T42/(?P<about>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'about')), array (  '_controller' => 'AppBundle\\Controller\\T42Controller::aboutAction',));
+            }
+
+            // contact
+            if (preg_match('#^/T42/(?P<contact>[^/]++)/?$#s', $pathinfo, $matches)) {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'contact');
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'contact')), array (  '_controller' => 'AppBundle\\Controller\\T42Controller::contactAction',));
+            }
+
         }
 
         // pagina_number
