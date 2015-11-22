@@ -127,62 +127,27 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // hello
-        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'hello')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::helloAction',));
-        }
-
-        // number
-        if (0 === strpos($pathinfo, '/magic') && preg_match('#^/magic/(?P<number>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'number')), array (  '_controller' => 'AppBundle\\Controller\\T41Controller::magicNumberAction',));
-        }
-
-        // dia
-        if (0 === strpos($pathinfo, '/dow') && preg_match('#^/dow/(?P<dia>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'dia')), array (  '_controller' => 'AppBundle\\Controller\\T41Controller::dayOfWeekAction',));
-        }
-
-        // tabla
-        if (0 === strpos($pathinfo, '/tableAction') && preg_match('#^/tableAction/(?P<tabla>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'tabla')), array (  '_controller' => 'AppBundle\\Controller\\T41Controller::tableAction',));
-        }
-
-        // lang
-        if (0 === strpos($pathinfo, '/helloAction') && preg_match('#^/helloAction/(?P<lang>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'lang')), array (  '_controller' => 'AppBundle\\Controller\\T41Controller::helloAction',));
-        }
-
-        // index
-        if (preg_match('#^/(?P<index>[^/]++)$#s', $pathinfo, $matches)) {
-            if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                $allow = array_merge($allow, array('GET', 'HEAD'));
-                goto not_index;
+        if (0 === strpos($pathinfo, '/T43')) {
+            // Numero
+            if (preg_match('#^/T43/(?P<number>\\d{3})$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'Numero')), array (  '_controller' => 'AppBundle\\Controller\\T43Controller::numberAction',));
             }
 
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'index')), array (  '_controller' => 'AppBundle\\Controller\\T42Controller::indexAction',));
-        }
-        not_index:
-
-        if (0 === strpos($pathinfo, '/T42')) {
-            // about
-            if (preg_match('#^/T42/(?P<about>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'about')), array (  '_controller' => 'AppBundle\\Controller\\T42Controller::aboutAction',));
+            // Texto
+            if (preg_match('#^/T43/(?P<text>\\D{3})$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'Texto')), array (  '_controller' => 'AppBundle\\Controller\\T43Controller::textAction',));
             }
 
-            // contact
-            if (preg_match('#^/T42/(?P<contact>[^/]++)/?$#s', $pathinfo, $matches)) {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'contact');
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'contact')), array (  '_controller' => 'AppBundle\\Controller\\T42Controller::contactAction',));
+            // DefAction
+            if (0 === strpos($pathinfo, '/T43/page') && preg_match('#^/T43/page/(?P<page>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'DefAction')), array (  '_controller' => 'AppBundle\\Controller\\T43Controller::pageAction',));
             }
 
-        }
+            // formatAction
+            if (0 === strpos($pathinfo, '/T43/alumnos') && preg_match('#^/T43/alumnos/(?P<year>\\d{4})(?:\\.(?P<_format>html|json))?$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'formatAction')), array (  '_controller' => 'AppBundle\\Controller\\T43Controller::yearAction',  '_format' => 'html',));
+            }
 
-        // pagina_number
-        if (0 === strpos($pathinfo, '/magic') && preg_match('#^/magic/(?P<number>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pagina_number')), array (  '_controller' => 'AppBundle\\Controller\\T41Controller::pruebaAction',));
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
