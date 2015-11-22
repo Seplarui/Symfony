@@ -22,7 +22,9 @@ class T42Controller extends Controller
 			//return $this->render(AppBundle\Controller::T42Controller);
 			//return $this->render(T42.html.twig);//
 			//return $this->render(T42Controller/T42.html.twig);//
-			return $this->render("G:\OneDrive\Documentos\DAW2\DWS\symfony\T3\app\Resources\\views\T42\T42.html.twig");
+			//return $this->render("G:\OneDrive\Documentos\DAW2\DWS\symfony\T3\app\Resources\\views\T42\T42.html.twig");
+			//return $this->render('AppBundle:T42Controller:Views:T42.html.twig');
+			return $this->render('T42/T42.html.twig');
 		}
 		else {
 			return new Response('<html><body>No existe la página</body></html>');
